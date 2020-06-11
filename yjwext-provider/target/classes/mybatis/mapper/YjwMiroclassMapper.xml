@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yjw.backend.mapper.YjwMiroclassMapper">
+
+    <select id="getMiroclassByCondition" parameterType="com.yjw.backend.entity.YjwReport" resultType="com.yjw.backend.entity.YjwMiroclass" >
+        <trim prefix="where" prefixOverrides="and">
+            <if test="miroclassTitle !=null and miroclassTitle !=''">
+                and miroclass_title like concat('%',#{miroclassTitle}, '%')
+            </if>
+
+            <if test="miroclassIndustryCategory !=null and miroclassIndustryCategory !=''">
+                and miroclass_industry_category like concat('%',#{miroclassIndustryCategory}, '%')
+            </if>
+
+            <if test="miroclassClassName !=null and miroclassClassName !=''">
+                and miroclass_class_name like concat('%',#{miroclassClassName}, '%')
+            </if>
+
+        </trim>
+    </select>
+
+</mapper>

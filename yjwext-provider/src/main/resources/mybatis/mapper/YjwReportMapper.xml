@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yjw.backend.mapper.YjwReportMapper">
+    <select id="getReportByCondition" parameterType="com.yjw.backend.entity.YjwReport" resultType="com.yjw.backend.entity.YjwReport" >
+        <trim prefix="where" prefixOverrides="and">
+            <if test="reportTitle !=null and reportTitle !=''">
+                and report_title like concat('%',#{reportTitle}, '%')
+            </if>
+
+            <if test="reportClassification !=null and reportClassification !=''">
+                and report_classification like concat('%',#{reportClassification}, '%')
+            </if>
+
+            <if test="reportIndustryCategory !=null and reportIndustryCategory !=''">
+                and report_industry_category like concat('%',#{reportIndustryCategory}, '%')
+            </if>
+
+        </trim>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,50 @@
+server:
+  port: 8892
+  max-http-header-size: 10240000
+spring:
+  application:
+    name: yjwext-provider
+    profiles:
+      active: uat
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        file-extension: yaml
+#        prefix: nacos
+
+  datasource:
+    username: root
+    password: No3fJ@Qn66DZx#
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/yjwext?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+  mybatis-plus:
+    mapper-locations: classpath:mybatis/mapper/*.xml
+    type-aliases-package: com.yjw.backend.entity,;com.yjw.front.entity,;
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 2000
+    lettuce:
+      pool:
+        max-idle: 10
+        max-active: 500
+        min-idle: 1
+        max-wait: 10000 #20s
+
+
+multipart:
+  maxRequestSize: 1024MB
+  maxFileSize: 1024MB
+
+  #showSql
+  logging:
+    level:
+      com:
+        example:
+          mapper: debug
